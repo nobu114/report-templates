@@ -1,0 +1,63 @@
+\documentclass[10.5pt, a4paper, titlepage]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+% ソースコードを貼るための設定
+\lstset{
+  basicstyle={\ttfamily},
+  columns=fixed,
+  basewidth=0.5em,
+  numbers=left,
+  frame=lines
+}
+% フォントを選択
+\usepackage[hiragino-pro]{luatexja-preset}
+\geometry{margin=2cm}
+% 1ページあたりの行数と1行あたりの文字数の指定のための定義
+\makeatletter
+\def\mojiparline#1{
+\newcounter{mpl}
+\setcounter{mpl}{#1}
+\@tempdima=\linewidth
+\advance\@tempdima by-\value{mpl}zw
+\addtocounter{mpl}{-1}
+\divide\@tempdima by \value{mpl}
+\advance\kanjiskip by\@tempdima
+\advance\parindent by\@tempdima
+}
+\makeatother
+\def\linesparpage#1{
+\baselineskip=\textheight
+\divide\baselineskip by #1
+}
+\renewcommand{\lstlistingname}{ソースコード}
+\title{タイトル}
+\author{学籍番号 名前 \\ メールアドレス}
+\date{}
+\begin{document}
+% \mojiparline{1} %X:一行あたり文字数の指定
+% \linesparpage{40} %Y:1ページあたり行数の指定
+\maketitle
+\newpage
+
+\tableofcontents
+\clearpage
+
+\section{はじめに}
+% lstinputlisting[caption=hogehoge.py]{src/hogehoge.py}
+% \begin{figure}[H]
+%     \includegraphics[width=15cm]{hogehoge.png}
+%     \caption{説明}
+%     \centering
+% \end{figure}
+\section{章１}
+
+\section{章２}
+
+\section{まとめ}
+\section*{参考文献}
+\begin{enumerate}
+    \item 参考文献
+\end{enumerate}
+\end{document}
